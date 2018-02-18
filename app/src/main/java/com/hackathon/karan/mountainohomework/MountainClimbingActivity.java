@@ -7,27 +7,38 @@ package com.hackathon.karan.mountainohomework;
         import android.os.Bundle;
         import android.util.Log;
         import android.view.MotionEvent;
+        import android.view.View;
         import android.widget.ImageView;
         import android.widget.ProgressBar;
         import android.widget.TextView;
 
 public class MountainClimbingActivity extends AppCompatActivity {
     AnimationDrawable climbAnimation;
+    ImageView ClimbImage;
+    AnimationDrawable victoryAnimation;
+    ImageView victoryImage;
+
     ProgressBar climbProgress;
     TextView timeDis;
+    Boolean timerComplete = false;
     int totaltime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mountain_climbing);
-        //instantiate the animation
-        ImageView ClimbImage = (ImageView) findViewById(R.id.animation);
+        //instantiate the animation for climbing
+        ClimbImage = (ImageView) findViewById(R.id.animation);
         ClimbImage.setBackgroundResource(R.drawable.climb_animation);
         climbAnimation = (AnimationDrawable) ClimbImage.getBackground();
 
+        //instantiate the image for the finish pose
+        victoryImage = findViewById(R.id.victoryView);
+        victoryImage.setBackgroundResource(R.drawable.victory_pose);
+        victoryAnimation = (AnimationDrawable) victoryImage.getBackground();
+
         //get the values from intent
         Intent climbInfo = getIntent();
-        final int totaltime = climbInfo.getIntExtra(DisplayTimerActivity.endTime,0);
+        totaltime = climbInfo.getIntExtra(DisplayTimerActivity.endTime,0);
 
         String displayMsg  = "begin Work for " + totaltime + " seconds" ;
         timeDis = findViewById(R.id.climbTime);
@@ -42,7 +53,9 @@ public class MountainClimbingActivity extends AppCompatActivity {
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
+        if (!hasFocus && timerComplete){
 
+        }
         int countDownTime = totaltime *1000;//convert the time into milliseconds
         final int intervalStep = 1000;//using 1 minute intervals
 
@@ -55,7 +68,15 @@ public class MountainClimbingActivity extends AppCompatActivity {
                 climbProgress.setProgress(currentProgress, true);
             }
             public void onFinish(){
+                //end the climb animation and make it invisible
+                climbAnimation.stop();
+                ClimbImage.setVisibility(View.INVISIBLE);
+
+                //make the victory image visibale and animate it
+                victoryImage.setVisibility(View.VISIBLE);
+                victoryAnimation.start();
                 timeDis.setText(R.string.climb_Completion);
+                timerComplete = true;
             }
         }.start();
         climbAnimation.start();
