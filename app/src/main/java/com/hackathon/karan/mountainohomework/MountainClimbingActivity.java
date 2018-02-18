@@ -52,18 +52,28 @@ public class MountainClimbingActivity extends AppCompatActivity {
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (!hasFocus && timerComplete){
+       super.onWindowFocusChanged(hasFocus);
 
-        }
         int countDownTime = totaltime *1000;//convert the time into milliseconds
         final int intervalStep = 1000;//using 1 minute intervals
 
         new CountDownTimer(countDownTime, intervalStep){
             int currentProgress = 0;
+
             public void onTick(long millisecondsUntilFinished){
-                //every minute increase the progressbar
-                timeDis.setText("time left" + millisecondsUntilFinished/intervalStep);
+                //get the current time in seconds
+                int currentSeconds= (int) millisecondsUntilFinished/intervalStep;
+
+                //find and remove the number of minutes
+                int currentMinutes = (currentSeconds/60);
+                currentSeconds= currentSeconds % 60;
+
+                //find and remove the current hours from minutes
+                int currentHours = currentMinutes/60;
+                currentMinutes = currentMinutes % 60;
+
+                //diplay them
+                timeDis.setText(getString(R.string.countdownText) + currentHours + "h:"+ currentMinutes + "m:" + currentSeconds + "s");
                 currentProgress = totaltime - ((int)millisecondsUntilFinished/intervalStep);
                 climbProgress.setProgress(currentProgress, true);
             }

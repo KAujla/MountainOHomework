@@ -30,12 +30,11 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:onClick="beginClimb"
-        android:text="Button"
+        android:text="Begin"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Begin" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TimePicker
         android:id="@+id/workTimer"
