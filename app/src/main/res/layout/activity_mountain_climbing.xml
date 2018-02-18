@@ -7,17 +7,29 @@
     tools:context="com.hackathon.karan.mountainohomework.MountainClimbingActivity">
 
     <TextView
-        android:id="@+id/climbTIme"
+        android:id="@+id/climbTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Begin Climbing" />
+
+    <ProgressBar
+        android:id="@+id/climbStatus"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/climbTime" />
+
 </android.support.constraint.ConstraintLayout>

@@ -3,10 +3,14 @@ package com.hackathon.karan.mountainohomework;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 public class DisplayTimerActivity extends AppCompatActivity {
     public static final String endTime = "com.hackathon.karan.mountainohomework.TIME";
@@ -26,11 +30,22 @@ public class DisplayTimerActivity extends AppCompatActivity {
     public void beginClimb(View view){
         //get the current settings on the time
         TimePicker workTimer = findViewById(R.id.workTimer);
-        int hoursAndMinutes[] = new int[2];
-        hoursAndMinutes[0] = workTimer.getHour();
-        hoursAndMinutes[1] = workTimer.getMinute();
+
+        //get the current time
+        GregorianCalendar currTime = new GregorianCalendar();
+        TimeZone currTZ = currTime.getTimeZone();
+
+        int hourOffset = (workTimer.getHour() % 12) - currTime.get(GregorianCalendar.HOUR);
+        int minuteOffset = workTimer.getMinute() - currTime.get(GregorianCalendar.MINUTE);
+        //Log.d("time", "workTimer.getHour() = " + workTimer.getHour());
+        //Log.d("time", "currTime.get(GregorianCalendar.HOUR) = " + currTime.get(GregorianCalendar.HOUR));
+        if ((hourOffset < 0) || (minuteOffset < 0)){
+            Log.e("TimeError", "the time negative!");
+        }
+        int workTime = ((hourOffset * 60) + minuteOffset)*60;//the total time the timer will run in seconds
+
         Intent beginClimbing = new Intent(this, MountainClimbingActivity.class);
-        beginClimbing.putExtra(endTime, hoursAndMinutes);
+        beginClimbing.putExtra(endTime, workTime);
         startActivity(beginClimbing);
     }
 }
