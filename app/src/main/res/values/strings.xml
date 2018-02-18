@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Mountain O\' Homework</string>
     <string name="action_settings">Settings</string>
+    <string name="welcome_message">Welcome back, Climber!</string>
+    <string name="getting_started">tap on the floating clock to get started</string>
+    <string name="test_message">This is only a test</string>
+    <string name="timer_info">Select how long you want to work with the timer</string>
 </resources>
