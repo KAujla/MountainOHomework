@@ -80,7 +80,7 @@ public class MountainClimbingActivity extends AppCompatActivity {
                 climbAnimation.stop();
                 ClimbImage.setVisibility(View.INVISIBLE);
 
-                //make the victory image visibale and animate it
+                //make the victory image visible and animate it
                 victoryImage.setVisibility(View.VISIBLE);
                 victoryAnimation.start();
                 timeDis.setText(R.string.climb_Completion);
