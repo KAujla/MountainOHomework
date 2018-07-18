@@ -28,7 +28,7 @@ public class DisplayTimerActivity extends AppCompatActivity {
     }
     //called, when the button is tapped
     public void beginClimb(View view){
-        //get the current settings on the time
+        //get the current settings on the timer
         TimePicker workTimer = findViewById(R.id.workTimer);
 
         //get the current time
