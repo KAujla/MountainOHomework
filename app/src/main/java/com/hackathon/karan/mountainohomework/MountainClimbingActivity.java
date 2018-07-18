@@ -38,6 +38,7 @@ public class MountainClimbingActivity extends AppCompatActivity {
         Intent climbInfo = getIntent();
         totaltime = climbInfo.getIntExtra(DisplayTimerActivity.endTime,0);
 
+        //display total number of minutes the user intends to work for 
         String displayMsg  = "begin Work for " + totaltime + " seconds" ;
         timeDis = findViewById(R.id.climbTime);
         timeDis.setText(displayMsg);
