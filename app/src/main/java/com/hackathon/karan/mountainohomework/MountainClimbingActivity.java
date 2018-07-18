@@ -59,19 +59,20 @@ public class MountainClimbingActivity extends AppCompatActivity {
         new CountDownTimer(countDownTime, intervalStep){
             int currentProgress = 0;
 
+                //convert time in milliseconds to H:M:S
             public void onTick(long millisecondsUntilFinished){
                 //get the current time in seconds
                 int currentSeconds= (int) millisecondsUntilFinished/intervalStep;
 
-                //find and remove the number of minutes
+                //find the number of minutes and remove the minutes from the second count
                 int currentMinutes = (currentSeconds/60);
                 currentSeconds= currentSeconds % 60;
 
-                //find and remove the current hours from minutes
+                //find and number of hours and remove the hours from the minute count
                 int currentHours = currentMinutes/60;
                 currentMinutes = currentMinutes % 60;
 
-                //diplay them
+                //diplay the hours: minutes: seconds
                 timeDis.setText(getString(R.string.countdownText) + currentHours + "h:"+ currentMinutes + "m:" + currentSeconds + "s");
                 currentProgress = totaltime - ((int)millisecondsUntilFinished/intervalStep);
                 climbProgress.setProgress(currentProgress, true);
