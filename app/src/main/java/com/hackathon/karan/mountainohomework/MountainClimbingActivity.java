@@ -34,7 +34,7 @@ public class MountainClimbingActivity extends AppCompatActivity {
         victoryImage.setBackgroundResource(R.drawable.victory_pose);
         victoryAnimation = (AnimationDrawable) victoryImage.getBackground();
 
-        //get the values from intent
+        //get the number of minutes the user intends to work for from intent
         Intent climbInfo = getIntent();
         totaltime = climbInfo.getIntExtra(DisplayTimerActivity.endTime,0);
 
