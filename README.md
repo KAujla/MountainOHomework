@@ -1,7 +1,7 @@
 # MountainOHomework
 
-made during the CSSS Mountain Hackathon
+Made during the CSSS Mountain Hackathon
 
 ### What is it 
-this app is a study helper, essentially disabling your to phone to remove distractions.
-you set a timer and the climber climbs the mountain, and the idea is that you work while the climber is climbing 
+This app is a study helper, essentially disabling your phone to keep the user from being distracted.
+You set a timer and the climber goes up the mountain, and the idea is that you work while the climber is escalating. 
